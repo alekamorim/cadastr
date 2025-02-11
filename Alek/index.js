@@ -1,13 +1,21 @@
-function validar() {
-    let nome = document.getElementById('nome').value;
-    let senha = document.getElementById('senha').value;
-
-    let nomeValido = /^[13579]{5}$/.test(nome);
-    let senhaValido = /^[02468]{4}$/.test(senha);
-
-    if (nomeValido && senhaValida) {
-        alert('nome e senha validos!');
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+  
+    
+    const senhaValida = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+  
+    if (email && senha) {
+      if (!senhaValida.test(senha)) {
+        alert('A senha deve ter pelo menos 8 caracteres, 1 letra maiúscula, 1 letra minúscula, 1 número e 1 caractere especial.');
+      } else {
+        alert('Cadastro realizado com sucesso!');
+        
+      }
     } else {
-        alert('nome ou senha inválidos!\n\nLembre-se:\n- O nome deve conter')
+      alert('Por favor, preencha todos os campos.');
     }
-}
+  });
+  
